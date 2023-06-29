@@ -1,0 +1,33 @@
+name: CI
+
+on: push
+
+jobs:
+    check:
+        name: Check
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v1
+        - name: Setup PHP with composer v2
+          uses: shivammathur/setup-php@v2
+          with:
+              php-version: '8.2'
+              tools: composer
+        -
+          name: Install dependencies
+          run: composer install
+        -
+          name: Run PHPStan first time
+          run: vendor/bin/phpstan analyze
+        -
+          name: Remove interface
+          run: rm -f src/Ignored/Bar.php
+        -
+          name: Run PHPStan second time
+          run: vendor/bin/phpstan analyze
+        -
+          name: Clear PHPStan cache
+          run: vendor/bin/phpstan clear-result-cache
+        -
+          name: Run PHPStan third time
+          run: vendor/bin/phpstan analyze
