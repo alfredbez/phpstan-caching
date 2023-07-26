@@ -4,4 +4,7 @@ parameters:
     paths:
         - src/
     excludePaths:
-        - src/Ignored/
+        analyse:
+            - src/Ignored/
+    scanDirectories:
+        - src/Ignored/Sub

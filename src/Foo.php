@@ -2,4 +2,4 @@
 
 namespace App;
 
-class Foo implements Ignored\Bar {}
+class Foo implements Ignored\Sub\Bar {}

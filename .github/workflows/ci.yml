@@ -21,7 +21,7 @@ jobs:
           run: vendor/bin/phpstan analyze
         -
           name: Remove interface
-          run: rm -f src/Ignored/Bar.php
+          run: rm -f src/Ignored/Sub/Bar.php
         -
           name: Run PHPStan second time
           run: vendor/bin/phpstan analyze
